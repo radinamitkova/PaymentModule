@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Login Page </title>
+  <style>
+      Body {
+          font-family: Calibri, Helvetica, sans-serif;
+          background-color: white;
+      }
+      button {
+          background-color: grey;
+          width: 100%;
+          color: white;
+          padding: 15px;
+          margin: 10px 0px;
+          border: none;
+          cursor: pointer;
+      }
+      form {
+          border: 3px solid #f1f1f1;
+      }
+      input[type=text], input[type=password] {
+          width: 100%;
+          margin: 8px 0;
+          padding: 12px 20px;
+          display: inline-block;
+          border: 2px solid green;
+          box-sizing: border-box;
+      }
+      button:hover {
+          opacity: 0.7;
+      }
+  </style>
+</head>
+<body>
+<div align="center">
+  <h1>Login Page</h1>
+</div>
+<div>
+  <form name="f" th:action="@{/login}" method="post">
+    <fieldset>
+      <legend>Login details</legend>
+      <div th:if="${param.error}" class="alert alert-error">
+        Invalid username and password
+      </div>
+      <div th:if="${param.logout}" class="alert alert-success">
+        You have been logged out.
+      </div>
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username"/>
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password"/>
+      <div class="form-actions">
+        <button type="submit" class="btn" style="font-size:20px">Log in</button>
+      </div>
+    </fieldset>
+  </form>
+</div>
+</body>
+</html>
